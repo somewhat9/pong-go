@@ -1,0 +1,28 @@
+package main
+
+import (
+	"log"
+
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/somewhat9/pong-go/internal/config"
+	"github.com/somewhat9/pong-go/internal/game"
+)
+
+func main() {
+	g := &game.Game{}
+	cfg, err := config.LoadYAML("settings")
+	g.Cfg = cfg
+	if err != nil {
+		log.Fatalf("could not load .yaml: %v", err)
+	}
+
+	if g.Cfg.Window.Resizable {
+		ebiten.SetWindowResizingMode(ebiten.WindowResizingModeEnabled)
+	}
+	ebiten.SetWindowSize(g.Cfg.Window.Width, g.Cfg.Window.Height)
+	ebiten.SetWindowTitle(g.Cfg.Window.Title)
+
+	if err := ebiten.RunGame(g); err != nil {
+		log.Fatal(err)
+	}
+}

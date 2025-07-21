@@ -1,0 +1,9 @@
+window:
+  title: "Pong Go"
+  width: 800
+  height: 600
+  resizable: true
+
+screen:
+  width: 640
+  height: 480
