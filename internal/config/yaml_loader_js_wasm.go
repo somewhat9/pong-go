@@ -30,5 +30,6 @@ func LoadYAML(fileName string) (*Config, error) {
 	if err := yaml.Unmarshal(data, cfg); err != nil {
 		return nil, fmt.Errorf("parse config %q: %w", path, err)
 	}
+	
 	return cfg, nil
 }
