@@ -11,12 +11,12 @@ import (
 func (g *Game) Draw(screen *ebiten.Image) {
 	screen.Fill(g.Cfg.Screen.Color)
 
-	paddleWidth := float32(g.Cfg.Screen.Width) / 64
-	paddleHeight := float32(g.Cfg.Screen.Height) / 6
-	vector.DrawFilledRect(screen, paddleWidth*2, g.p1.y, paddleWidth, paddleHeight, color.White, false)
-	vector.DrawFilledRect(screen, float32(g.Cfg.Screen.Width) - paddleWidth*3, g.p2.y, paddleWidth, paddleHeight, color.White, false)
-	midline_x := float32(g.Cfg.Screen.Width)/2 - paddleWidth
-	drawDashedLine(screen, midline_x, 0, midline_x, float32(g.Cfg.Screen.Height), float32(8.1), float32(16.75), paddleWidth, color.White, false)
+	vector.DrawFilledRect(screen, g.p1.w*2, g.p1.y, g.p1.w, g.p1.h, g.Cfg.Paddle.Color, false)
+	vector.DrawFilledRect(screen, float32(g.Cfg.Screen.Width) - g.p2.w*3, g.p2.y, g.p2.w, g.p2.h, g.Cfg.Paddle.Color, false)
+
+	drawDashedLine(screen, float32(g.Cfg.Screen.Width)/2, 0, float32(g.Cfg.Screen.Width)/2, float32(g.Cfg.Screen.Height), float32(8.1), float32(16.75), g.midline.w, g.Cfg.Line.Color, false)
+	
+	vector.DrawFilledCircle(screen, g.ball.x, g.ball.y, g.ball.r, g.Cfg.Ball.Color, false)
 }
 
 func drawDashedLine(dst *ebiten.Image, x0, y0, x1, y1, dashLen, gapLen, width float32, clr color.Color, antialias bool) {

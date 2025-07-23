@@ -9,9 +9,8 @@ import (
 )
 
 func main() {
-	g := &game.Game{}
 	cfg, err := config.LoadYAML("settings")
-	g.Cfg = cfg
+	g := game.NewGame(cfg)
 	if err != nil {
 		log.Fatalf("could not load .yaml: %v", err)
 	}

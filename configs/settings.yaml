@@ -8,3 +8,12 @@ screen:
   width: 640
   height: 480
   color: "#050505"
+
+paddle:
+  color: "FFFFFF"
+
+ball:
+  color: "FFFFFF"
+
+line:
+  color: "AFAFAFAF"
