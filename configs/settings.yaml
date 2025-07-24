@@ -8,6 +8,7 @@ screen:
   width: 640
   height: 480
   color: "#050505"
+  font_size: 64
 
 paddle:
   color: "FFFFFF"

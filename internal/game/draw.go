@@ -1,10 +1,12 @@
 package game
 
 import (
+	"fmt"
 	"image/color"
 	"math"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/text"
 	"github.com/hajimehoshi/ebiten/v2/vector"
 )
 
@@ -16,6 +18,11 @@ func (g *Game) Draw(screen *ebiten.Image) {
 
 	drawDashedLine(screen, float32(g.Cfg.Screen.Width)/2, 0, float32(g.Cfg.Screen.Width)/2, float32(g.Cfg.Screen.Height), float32(8.1), float32(16.75), g.midline.w, g.Cfg.Line.Color, false)
 	
+	b1 := text.BoundString(g.Font, fmt.Sprint(g.p1.score))
+	b2 := text.BoundString(g.Font, fmt.Sprint(g.p2.score))
+	text.Draw(screen, fmt.Sprint(g.p1.score), g.Font,  (g.Cfg.Screen.Width-b1.Dx())/4, 50, color.White)
+	text.Draw(screen, fmt.Sprint(g.p2.score), g.Font, (g.Cfg.Screen.Width-b2.Dx())*3/4, 50, color.White)
+
 	vector.DrawFilledCircle(screen, g.ball.x, g.ball.y, g.ball.r, g.Cfg.Ball.Color, false)
 }
 

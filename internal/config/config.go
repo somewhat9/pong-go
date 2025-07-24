@@ -12,6 +12,7 @@ type Screen struct {
 	Width int         `yaml:"width"`
 	Height int        `yaml:"height"`
 	Color HexColor    `yaml:"color"`
+	FontSize float64  `yaml:"font_size"`
 }
 
 type Window struct {

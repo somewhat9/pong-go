@@ -33,7 +33,7 @@ func (g *Game) Update() error {
 	if (g.p2.y + g.p2.dy < 0 || g.p2.y + g.p2.dy > float32(g.Cfg.Screen.Height)-g.p2.h) {
 		g.p2.dy = -g.p2.dy
 	} 
-	g.p2.y += g.p2.dy
+	g.p2.y += g.p2.dy/1.25
 	
 	
 	g.ball.x += g.ball.dx
