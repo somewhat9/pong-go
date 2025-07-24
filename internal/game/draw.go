@@ -24,6 +24,12 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	text.Draw(screen, fmt.Sprint(g.p2.score), g.Font, (g.Cfg.Screen.Width-b2.Dx())*3/4, 50, color.White)
 
 	vector.DrawFilledCircle(screen, g.ball.x, g.ball.y, g.ball.r, g.Cfg.Ball.Color, false)
+
+	if !g.status {
+		message := "PRESS SPACE!"
+		bounds := text.BoundString(g.Font, message)
+		text.Draw(screen, message, g.Font, (g.Cfg.Screen.Width-bounds.Dx())/2, (g.Cfg.Screen.Height-bounds.Dy())/2, color.White)
+	}
 }
 
 func drawDashedLine(dst *ebiten.Image, x0, y0, x1, y1, dashLen, gapLen, width float32, clr color.Color, antialias bool) {

@@ -11,6 +11,7 @@ import (
 type Game struct {
 	Cfg *config.Config
 	Font font.Face
+	status bool
 	p1 paddle
 	p2 paddle
 	ball
@@ -130,7 +131,7 @@ func (p *paddle) Automatic(b *ball) {
 	p.dy = target_y - p.y
 
 	if float32(math.Abs(float64(p.dy))) > b.speed {
-		p.dy = float32(math.Copysign(float64(b.speed)/2, float64(p.dy)))
+		p.dy = float32(math.Copysign(float64(b.speed), float64(p.dy)))
 	}
 }
 
