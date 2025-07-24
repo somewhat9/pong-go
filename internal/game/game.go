@@ -37,6 +37,10 @@ type ball struct {
 	r float32
 }
 
+type midline struct {
+	w float32
+}
+
 func (g *Game) collide() {
 	if g.ball.y < g.ball.r || g.ball.y > float32(g.Cfg.Screen.Height)-g.ball.r {
 		g.ball.dy *= -1
@@ -119,9 +123,13 @@ func clampToInterval(v, min, max float32) float32 {
 
 }
 
+func (p *paddle) Automatic(b *ball) {
+	target_y := b.y - p.h/2
+	p.dy = target_y - p.y
 
-type midline struct {
-	w float32
+	if float32(math.Abs(float64(p.dy))) > b.speed {
+		p.dy = float32(math.Copysign(float64(b.speed), float64(p.dy)))
+	}
 }
 
 func NewGame(cfg *config.Config) *Game {
@@ -150,6 +158,5 @@ func NewGame(cfg *config.Config) *Game {
 	g.ball.maxBounceAngle = 5*math.Pi/12
 	g.speedUp = 1
 	g.resetBall()
-	
 	return g
 }
