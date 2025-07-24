@@ -5,6 +5,8 @@
 [![Ebiten Version](https://img.shields.io/badge/ebiten-%3E%3Dv2.8-green)](https://ebiten.org/)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](/LICENSE)
 
+![pong-go-demo](https://github.com/user-attachments/assets/12a43c3e-4ee6-4afa-b156-76ab0feb8852)
+
 ### Features:
 - [x] WASM Compilation
 - [x] Customizable Settings in `settings.yaml`
